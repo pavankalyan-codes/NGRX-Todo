@@ -8,7 +8,7 @@ export interface TodoState {
 }
 
 export const initialState: TodoState = {
-  todos: [{ name: 'hai' }, { name: 'bye' }],
+  todos: [],
 };
 
 export const todoReducer = createReducer(
@@ -17,12 +17,22 @@ export const todoReducer = createReducer(
     ...state,
     todos: [...state.todos, todo],
   })),
+
   on(TodoActions.removeTodo, (state: TodoState, { i }) => ({
     ...state,
     todos: state.todos.filter(function (x, index) {
       return index != i;
     }),
-  }))
+  })),
+
+  on(TodoActions.SuccessGetToDoAction, (state: TodoState, { payload }) => {
+    return { ...state, todos: payload };
+  }),
+
+  on(TodoActions.ErrorToDoAction, (state: TodoState, error: Error) => {
+    console.log(error);
+    return { ...state, todo: [] };
+  })
 );
 
 export function reducer(state: TodoState | undefined, action: Action): any {

@@ -10,6 +10,8 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { TodoModule } from './todo/todo.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 @NgModule({
   declarations: [AppComponent, ListTodoComponent],
@@ -21,6 +23,7 @@ import { TodoModule } from './todo/todo.module';
     StoreDevtoolsModule.instrument(),
     //!environment.production ? StoreDevtoolsModule.instrument() : [],
     TodoModule,
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
