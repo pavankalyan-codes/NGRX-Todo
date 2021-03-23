@@ -1,0 +1,29 @@
+<div *ngIf="todos | async; else loading">
+  <ul class="list-group w-50 p-3 m-auto">
+    <li
+      class="list-group-item"
+      *ngFor="let todo of todos | async; let i = index"
+    >
+      <span>
+        {{ todo.name }}
+      </span>
+      <button
+        (click)="remove(i)"
+        type="button"
+        class="close"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <div
+    class="spinner-border m-auto d-flex justify-content-center"
+    role="status"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-template>
