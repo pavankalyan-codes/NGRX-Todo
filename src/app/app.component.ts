@@ -13,6 +13,7 @@ import { selectTodos } from './todo/store/selector/todo.selectors';
 import { addTodo } from './todo/store/action/todo.actions';
 
 import * as TodoActions from '../app/todo/store/action/todo.actions';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,6 +44,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(TodoActions.getAllTodos());
-    console.log("Hello",process.env.INCOMING_HOOK_BODY);
+    console.log("Hello",environment.INCOMING_HOOK_BODY);
   }
 }

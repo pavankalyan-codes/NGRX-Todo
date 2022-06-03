@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  INCOMING_HOOK_BODY:"sds"
 };
