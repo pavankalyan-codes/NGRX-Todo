@@ -43,5 +43,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(TodoActions.getAllTodos());
+    console.log("Hello",process.env.INCOMING_HOOK_BODY);
   }
 }
